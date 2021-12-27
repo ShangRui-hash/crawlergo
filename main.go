@@ -10,14 +10,15 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/panjf2000/ants/v2"
-	"github.com/sirupsen/logrus"
-	"github.com/urfave/cli/v2"
 	"log"
 	"os"
 	"os/signal"
 	"strings"
 	"sync"
+
+	"github.com/panjf2000/ants/v2"
+	"github.com/sirupsen/logrus"
+	"github.com/urfave/cli/v2"
 )
 
 /**
@@ -73,11 +74,11 @@ func main() {
 	customFormKeywordValues = cli.NewStringSlice()
 
 	app := &cli.App{
-		Name:        "crawlergo",
-		Usage:       "A powerful browser crawler for web vulnerability scanners",
-		UsageText:   "crawlergo [global options] url1 url2 url3 ... (must be same host)",
-		Version:     "v0.4.2",
-		Authors:     []*cli.Author{&author},
+		Name:      "crawlergo",
+		Usage:     "A powerful browser crawler for web vulnerability scanners",
+		UsageText: "crawlergo [global options] url1 url2 url3 ... (must be same host)",
+		Version:   "v0.4.2",
+		Authors:   []*cli.Author{&author},
 		Flags: []cli.Flag{
 			&cli.PathFlag{
 				Name:        "chromium-path",
