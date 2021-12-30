@@ -1,0 +1,9 @@
+FROM alpine as chromium_stage
+RUN sed -i "s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g" /etc/apk/repositories \
+      && apk add --no-cache wget \
+      && apk add --update chromium
+
+FROM alpine 
+COPY --from=chromium_stage /usr/lib/chromium/chrome  /chrome
+COPY ./crawlergo /crawlergo
+ENTRYPOINT ["/crawlergo","-c","/chrome","$@"]
