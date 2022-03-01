@@ -6,4 +6,5 @@ RUN sed -i "s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g" /etc/apk/repositories
 FROM alpine 
 COPY --from=chromium_stage /usr/lib/chromium/chrome  /chrome
 COPY ./crawlergo /crawlergo
-ENTRYPOINT ["/crawlergo","-c","/chrome","$@"]
+COPY ./dirsearch.txt /dirsearch.txt
+ENTRYPOINT ["/crawlergo","-c","/chrome","-f","strict","--fuzz-path","--robots-path"," --fuzz-path-dict","/dirsearch.txt"]

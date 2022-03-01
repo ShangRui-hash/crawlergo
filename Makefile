@@ -6,11 +6,11 @@ SRCPATH="./cmd/crawlergo/crawlergo_cmd.go"
 all: gotool build_mac
 
 build_linux:
-	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build  -o ${BINARY}
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build  -o ${BINARY}-linux
 build_win:
 	CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o ${BINARY}.exe	
 build_mac:
-	CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build  -o ${BINARY}
+	CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build  -o ${BINARY}-mac
 build_docker:
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build  -o ${BINARY} && docker build -t ${BINARY} .
 
